@@ -1380,7 +1380,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     // PWA Update Logic
     const updateSW = registerSW({
         onNeedRefresh() {
-            showUpdateNotification(() => updateSW(true));
+            // showUpdateNotification(() => updateSW(true));  <-- COMMENTED OUT
+            console.log("Update available (auto-reload suppressed)");
         },
         onOfflineReady() {
             console.log('App ready to work offline');
@@ -1392,13 +1393,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         e.preventDefault();
         deferredPrompt = e;
 
-        // Show the manual install button in settings
+        // Show the manual install button in settings (Keep this so settings button works)
         const installSetting = document.getElementById('install-app-setting');
         if (installSetting) installSetting.style.display = 'flex';
 
+        /* // BLOCK THE POPUP:
         if (!localStorage.getItem('installPromptDismissed')) {
             showInstallPrompt(deferredPrompt);
         }
+        */
     });
 
     document.getElementById('manual-install-btn')?.addEventListener('click', async () => {
