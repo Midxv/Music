@@ -344,9 +344,10 @@ export const themeManager = {
 
     getTheme() {
         try {
-            return localStorage.getItem(this.STORAGE_KEY) || 'system';
+            // Changed default from 'system' to 'forest'
+            return localStorage.getItem(this.STORAGE_KEY) || 'forest';
         } catch {
-            return 'system';
+            return 'forest';
         }
     },
 
