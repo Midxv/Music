@@ -832,29 +832,8 @@ export class UIRenderer {
             }
         };
 
-        if (localStorage.getItem('epilepsy-warning-dismissed') === 'true') {
-            startVisualizer();
-        } else {
-            const modal = document.getElementById('epilepsy-warning-modal');
-            if (modal) {
-                modal.classList.add('active');
-
-                const acceptBtn = document.getElementById('epilepsy-accept-btn');
-                const cancelBtn = document.getElementById('epilepsy-cancel-btn');
-
-                acceptBtn.onclick = () => {
-                    modal.classList.remove('active');
-                    localStorage.setItem('epilepsy-warning-dismissed', 'true');
-                    startVisualizer();
-                };
-                cancelBtn.onclick = () => {
-                    modal.classList.remove('active');
-                    this.closeFullscreenCover();
-                };
-            } else {
-                startVisualizer();
-            }
-        }
+        // Bypass warning and start immediately
+        startVisualizer();
     }
 
     closeFullscreenCover() {
