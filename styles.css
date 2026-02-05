@@ -5551,3 +5551,94 @@ textarea:focus {
 .track-list-search-input {
     font-size: 0.95rem;
 }
+/* ---------------------------------------------------------
+   GLOBAL BOTTOM NAVIGATION (Mobile Layout for PC & Mobile)
+   --------------------------------------------------------- */
+
+/* 1. Hide the Sidebar everywhere */
+.sidebar {
+    display: none !important;
+}
+
+/* 2. Fix the Main Layout Grid (One column, no sidebar space) */
+.app-container {
+    grid-template:
+        'main' 1fr
+        'player' auto / 1fr !important;
+}
+
+/* 3. Style the Bottom Nav (Visible Everywhere) */
+.bottom-nav {
+    display: flex; /* Show flex always, not just mobile */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: calc(60px + env(safe-area-inset-bottom));
+    background-color: color-mix(in srgb, var(--card) 85%, transparent);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border);
+    z-index: 2200;
+    padding-bottom: env(safe-area-inset-bottom);
+    justify-content: space-around;
+    align-items: center;
+}
+
+.bottom-nav .nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted-foreground);
+    text-decoration: none;
+    font-size: 0.7rem;
+    gap: 4px;
+    height: 100%;
+    transition: color 0.2s ease;
+}
+
+.bottom-nav .nav-item.active {
+    color: var(--highlight);
+}
+
+.bottom-nav .nav-item svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2px;
+}
+
+.bottom-nav .nav-item.active svg {
+    stroke: var(--highlight);
+    fill: color-mix(in srgb, var(--highlight) 20%, transparent);
+}
+
+/* 4. Fix Player Bar Positioning (Center it above bottom nav) */
+.now-playing-bar {
+    width: 96% !important;
+    left: 2% !important;
+    /* Position above the bottom nav (60px nav + 15px gap) */
+    bottom: calc(75px + env(safe-area-inset-bottom)) !important;
+    border-radius: var(--radius) !important;
+    /* Ensure it doesn't look like the desktop bar */
+    grid-template-columns: minmax(150px, 1fr) 0.8fr auto;
+}
+
+/* 5. Add Padding to Content so it scrolls fully */
+.main-content {
+    /* Clear player bar + bottom nav */
+    padding-bottom: calc(180px + env(safe-area-inset-bottom)) !important;
+}
+
+/* 6. Mobile Specific Adjustments (Keep these for small screens) */
+@media (max-width: 768px) {
+    .now-playing-bar {
+        /* On small phones, reduce gap slightly */
+        bottom: calc(65px + env(safe-area-inset-bottom)) !important;
+        left: 10px !important;
+        width: calc(100% - 20px) !important;
+        grid-template:
+            'track controls' auto
+            'progress progress' auto / 1fr auto;
+    }
+}

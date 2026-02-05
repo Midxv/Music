@@ -1082,7 +1082,7 @@ export class UIRenderer {
             page.classList.toggle('active', page.id === `page-${pageId}`);
         });
 
-        document.querySelectorAll('.sidebar-nav a').forEach((link) => {
+        document.querySelectorAll('.sidebar-nav a, .bottom-nav a').forEach((link) => {
             link.classList.toggle(
                 'active',
                 link.pathname === `/${pageId}` || (pageId === 'home' && link.pathname === '/')

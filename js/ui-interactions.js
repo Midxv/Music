@@ -16,7 +16,6 @@ import { downloadQualitySettings } from './storage.js';
 export function initializeUIInteractions(player, api, ui) {
     const sidebar = document.querySelector('.sidebar');
     const sidebarOverlay = document.getElementById('sidebar-overlay');
-    const hamburgerBtn = document.getElementById('hamburger-btn');
     const queueBtn = document.getElementById('queue-btn');
     const libraryPage = document.getElementById('page-library');
 
@@ -73,12 +72,6 @@ export function initializeUIInteractions(player, api, ui) {
     }
 
     let draggedQueueIndex = null;
-
-    // Sidebar mobile
-    hamburgerBtn.addEventListener('click', () => {
-        sidebar.classList.add('is-open');
-        sidebarOverlay.classList.add('is-visible');
-    });
 
     const closeSidebar = () => {
         sidebar.classList.remove('is-open');
