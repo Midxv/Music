@@ -477,7 +477,8 @@ export function initializeSettings(scrobbler, player, api, ui) {
     // Streaming Quality setting
     const streamingQualitySetting = document.getElementById('streaming-quality-setting');
     if (streamingQualitySetting) {
-        const savedQuality = localStorage.getItem('playback-quality') || 'HI_RES_LOSSLESS';
+        // Default changed to HIGH (320kb AAC)
+        const savedQuality = localStorage.getItem('playback-quality') || 'HIGH';
         streamingQualitySetting.value = savedQuality;
         player.setQuality(savedQuality);
 

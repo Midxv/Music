@@ -524,9 +524,10 @@ export const downloadQualitySettings = {
     STORAGE_KEY: 'download-quality',
     getQuality() {
         try {
-            return localStorage.getItem(this.STORAGE_KEY) || 'HI_RES_LOSSLESS';
+            // Default changed to HIGH (320kb AAC)
+            return localStorage.getItem(this.STORAGE_KEY) || 'HIGH';
         } catch {
-            return 'HI_RES_LOSSLESS';
+            return 'HIGH';
         }
     },
     setQuality(quality) {
