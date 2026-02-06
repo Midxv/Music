@@ -1281,7 +1281,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (query) {
             navigate(`/search/${encodeURIComponent(query)}`);
         }
-    }, 300);
+    }, 50);
 
     searchInput.addEventListener('input', (e) => {
         const query = e.target.value.trim();
