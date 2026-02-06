@@ -1285,7 +1285,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     searchInput.addEventListener('input', (e) => {
         const query = e.target.value.trim();
-        if (query.length > 1) {
+        if (query.length > 2) {
             performSearch(query);
         }
     });
