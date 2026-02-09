@@ -345,9 +345,9 @@ export const themeManager = {
     getTheme() {
         try {
             // Changed default from 'system' to 'forest'
-            return localStorage.getItem(this.STORAGE_KEY) || 'forest';
+            return localStorage.getItem(this.STORAGE_KEY) || 'latte';
         } catch {
-            return 'forest';
+            return 'latte';
         }
     },
 
@@ -461,9 +461,9 @@ export const backgroundSettings = {
     isEnabled() {
         try {
             // Default to true if not set
-            return localStorage.getItem(this.STORAGE_KEY) !== 'false';
+            return localStorage.getItem(this.STORAGE_KEY) !== 'true';
         } catch {
-            return true;
+            return false;
         }
     },
 
@@ -525,9 +525,9 @@ export const downloadQualitySettings = {
     getQuality() {
         try {
             // Default changed to HIGH (320kb AAC)
-            return localStorage.getItem(this.STORAGE_KEY) || 'HIGH';
+            return localStorage.getItem(this.STORAGE_KEY) || 'LOSSLESS';
         } catch {
-            return 'HIGH';
+            return 'LOSSLESS';
         }
     },
     setQuality(quality) {
@@ -748,9 +748,9 @@ export const visualizerSettings = {
 
     getMode() {
         try {
-            return localStorage.getItem(this.MODE_KEY) || 'solid';
+            return localStorage.getItem(this.MODE_KEY) || 'blended';
         } catch {
-            return 'solid';
+            return 'blended';
         }
     },
 
@@ -777,7 +777,7 @@ export const visualizerSettings = {
             const val = localStorage.getItem(this.SMART_INTENSITY_KEY);
             return val === null ? true : val === 'true';
         } catch {
-            return true;
+            return false;
         }
     },
 
@@ -1025,7 +1025,7 @@ export const homePageSettings = {
             const val = localStorage.getItem(this.SHOW_RECOMMENDED_SONGS_KEY);
             return val === null ? true : val === 'true';
         } catch {
-            return true;
+            return false;
         }
     },
 
@@ -1064,7 +1064,7 @@ export const homePageSettings = {
             const val = localStorage.getItem(this.SHOW_JUMP_BACK_IN_KEY);
             return val === null ? true : val === 'true';
         } catch {
-            return true;
+            return false;
         }
     },
 
